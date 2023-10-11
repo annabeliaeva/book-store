@@ -1,0 +1,67 @@
+/* Header.module.css */
+
+
+.header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    /* Центрируем элементы по горизонтали */
+    align-items: center;
+    /* Центрируем элементы по вертикали */
+    background-color: #fff;
+    /* Фоновый цвет Header */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Тень Header */
+    padding: 0px;
+    /* Отступы сверху и снизу */
+    margin: 0;
+    height: 70px;    
+
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    /* Цвет текста логотипа */
+    text-decoration: none;
+    /* Убираем подчеркивание ссылки */
+}
+
+.navbar-brand:hover {
+    color: #007bff;
+    /* Цвет текста логотипа при наведении */
+    transition: color 0.3s ease;
+    /* Плавное изменение цвета при наведении */
+}
+
+.navLinks {
+    margin-left: auto;
+}
+
+.navLink {
+    color: #333;
+    /* Цвет текста ссылок */
+    font-size: 18px;
+    margin: 0 20px;
+    text-decoration: none;
+    /* Убираем подчеркивание ссылки */
+    transition: color 0.3s ease;
+    /* Плавное изменение цвета при наведении */
+}
+
+.navLink:hover {
+    color: #ffffff;
+    /* Цвет текста ссылок при наведении */
+}
+
+.logo{
+    width: 200px;
+    margin-right: auto;
+}
+
+.navbar{
+    width: 100%;
+}
