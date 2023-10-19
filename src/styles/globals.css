@@ -1,36 +1,76 @@
 * {
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-body{
-    width: 100%;
-    font-family: Merriweather,Georgia,Cambria,Serif;
+body {
+  width: 100%;
+  font-family: Merriweather, Georgia, Cambria, Serif;
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 
-  .addBookLink {
-    display: inline-block;
-    background-color: #0070f3;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-  }
+.addBookLink {
+  display: inline-block;
+  background-color: #0070f3;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
 
-  .flex_direction_row{
-    display: flex;
-    flex-direction: row;
-  }
-  
+.flex_direction_row {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.app-wrapper-content {
+  display: flex;
+  min-height: 800px;
+  /* Shorthand property specifying flex-grow, flex-shrink, and flex-basis. */
+  background-color: whitesmoke;
+  border-radius: 15px;
+}
