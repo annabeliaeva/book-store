@@ -16,6 +16,9 @@ const Header = () => {
             <Link href="/" className={styles.navLink}>
               Главная
             </Link>
+            <Link href="/catalog" className={styles.navLink}>
+              Каталог
+            </Link>
             <Link href="/shopping-card" className={styles.navLink}>
               Корзина
             </Link>

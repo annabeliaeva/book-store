@@ -1,6 +1,6 @@
 import Link from 'next/link'; // Для создания ссылок между страницами
 import styles from './BookList.module.css'; // Импортируем стили
-import booksData from '../../data/books.json'; // Импортируем данные о книгах
+import booksData from '../../data/popular_books.json'; // Импортируем данные о книгах
 import { Col, Container, Image, Row } from 'react-bootstrap'; // Импортируем компоненты react-bootstrap
 import '@/styles/globals.css'
 import { AppLayout } from '../AppLayout/AppLayout';
