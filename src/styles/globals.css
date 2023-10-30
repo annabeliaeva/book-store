@@ -5,7 +5,7 @@
 
 body {
   width: 100%;
-  font-family: Merriweather, Georgia, Cambria, Serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .main {
@@ -73,4 +73,10 @@ body {
   /* Shorthand property specifying flex-grow, flex-shrink, and flex-basis. */
   background-color: whitesmoke;
   border-radius: 15px;
+}
+
+.bookList {
+  margin-top: 20px;
+  width: 57%;
+  height: 2000px;
 }
