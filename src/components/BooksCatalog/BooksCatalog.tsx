@@ -42,7 +42,7 @@ const BooksCatalog = (props: Props) => {
                                 value={query}
                                 placeholder='Введите название книги или автора...' />
                             <Button
-                                variant="secondary"
+                                variant="button_color"
                                 type="submit">Искать
                             </Button>
                         </Form.Group>

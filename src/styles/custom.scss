@@ -3,12 +3,20 @@
 // good-looking theme
 $primary: #f5eff7;
 $secondary: #e1dbf5;
-$dark: #386086;
+$dark: #6f3ea3;
 $light: #eff4f7;
 $success: #66ab57;
 $info: #ffffff;
 $warning: #e49b1f;
 $danger: #f44336;
+
+
+$theme-colors: (
+    "button_color": #84b3dc,
+    "primary": $primary,
+    "secondary":$secondary,
+    "light": $light
+);
 
 // import bootstrap styles at the bottom!
 @import '~bootstrap/scss/bootstrap.scss';
