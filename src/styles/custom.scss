@@ -8,14 +8,16 @@ $light: #eff4f7;
 $success: #66ab57;
 $info: #ffffff;
 $warning: #e49b1f;
-$danger: #f44336;
+$danger: #ec685f;
 
 
 $theme-colors: (
     "button_color": #84b3dc,
     "primary": $primary,
     "secondary":$secondary,
-    "light": $light
+    "light": $light,
+    "danger": $danger,
+    "light_green": #3EB489
 );
 
 // import bootstrap styles at the bottom!

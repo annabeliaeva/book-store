@@ -18,7 +18,6 @@ const BooksCatalog = (props: Props) => {
 
     const { handleSort, handleSearch, initial_list, data } = props
 
-    let searched_data = [...data]
 
     return (
         <>
@@ -42,7 +41,7 @@ const BooksCatalog = (props: Props) => {
                                 value={query}
                                 placeholder='Введите название книги или автора...' />
                             <Button
-                                variant="button_color"
+                                variant="light_green"
                                 type="submit">Искать
                             </Button>
                         </Form.Group>

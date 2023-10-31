@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { Button, Col, Container, FormControl, Image, InputGroup, Row } from "react-bootstrap";
 import styles from './BookList.module.css'
 import { BooksList } from "@/interfaces/BooksList";
+import { useState } from "react";
 
 interface Props {
     data: BooksList[]
@@ -9,6 +10,30 @@ interface Props {
 const BookList = (props: Props) => {
 
     const { data } = props
+
+    const initialCartCount = Array(props.data.length).fill(0)
+
+    const [cartCount, setCartCount] = useState(initialCartCount)
+
+    const handleAddToCart = (index: number) => {
+        const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
+        updatedCartCounts[index]++; // Increment the count for the selected book
+        setCartCount(updatedCartCounts); // Update the state with the new counts
+    };
+
+    const handlePlusCount = (index: number) => {
+        const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
+        updatedCartCounts[index]++; // Increment the count for the selected book
+        setCartCount(updatedCartCounts); // Update the state with the new counts
+    }
+
+    const handleMinusCount = (index: number) => {
+        const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
+        if (updatedCartCounts[index] > 0)
+            updatedCartCounts[index]--; // Increment the count for the selected book
+        setCartCount(updatedCartCounts); // Update the state with the new counts
+    }
+
 
     return (
         <Container className={`row ${styles.table}`}>
@@ -29,9 +54,29 @@ const BookList = (props: Props) => {
                         </Col>
                         <Row>
                             <Col className="align-items-end ">
-                                <Button
-                                    variant='button_color'
-                                    className={styles.add_to_cart_button}>В корзину</Button>
+
+                                {cartCount[index] > 0 ? ( // Check if cart count is more than 1
+                                    <Container className="flex-row">
+                                        <InputGroup className={styles.count_btns_group}>
+                                            <Button variant='light_green' onClick={() => handleMinusCount(index)} className={styles.plus_button}>-
+                                            </Button>
+                                            <FormControl
+                                                readOnly
+                                                value={cartCount[index] + " шт."}
+                                                className={`cart-count-field ${styles.form_control}`}
+                                                aria-label="Cart Count"
+                                            />
+                                            <Button variant='light_green' onClick={() => handlePlusCount(index)} className={styles.plus_button}>+
+                                            </Button>
+                                        </InputGroup>
+                                    </Container>
+                                ) : (
+                                    <Button
+                                        onClick={() => handleAddToCart(index)}
+                                        variant='secondary'
+                                        className={styles.add_to_cart_button}> В корзину
+                                    </Button>
+                                )}
                             </Col>
                         </Row>
                     </Container>
