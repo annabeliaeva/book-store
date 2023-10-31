@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button, Col, Container, FormControl, Image, InputGroup, Row } from "react-bootstrap";
 import styles from './BookList.module.css'
 import { BooksList } from "@/interfaces/BooksList";
-import { useState } from "react";
+import { useState } from "react"
 
 interface Props {
     data: BooksList[]
@@ -15,13 +15,14 @@ const BookList = (props: Props) => {
 
     const [cartCount, setCartCount] = useState(initialCartCount)
 
-    const handleAddToCart = (index: number) => {
+
+    const handleAddToCart = (index: number, book: BooksList) => {
         const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
         updatedCartCounts[index]++; // Increment the count for the selected book
         setCartCount(updatedCartCounts); // Update the state with the new counts
     };
 
-    const handlePlusCount = (index: number) => {
+    const handlePlusCount = (index: number, book: BooksList) => {
         const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
         updatedCartCounts[index]++; // Increment the count for the selected book
         setCartCount(updatedCartCounts); // Update the state with the new counts
@@ -66,13 +67,13 @@ const BookList = (props: Props) => {
                                                 className={`cart-count-field ${styles.form_control}`}
                                                 aria-label="Cart Count"
                                             />
-                                            <Button variant='light_green' onClick={() => handlePlusCount(index)} className={styles.plus_button}>+
+                                            <Button variant='light_green' onClick={() => handlePlusCount(index, book)} className={styles.plus_button}>+
                                             </Button>
                                         </InputGroup>
                                     </Container>
                                 ) : (
                                     <Button
-                                        onClick={() => handleAddToCart(index)}
+                                        onClick={() => handleAddToCart(index, book)}
                                         variant='secondary'
                                         className={styles.add_to_cart_button}> В корзину
                                     </Button>

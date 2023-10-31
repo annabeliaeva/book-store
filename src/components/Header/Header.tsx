@@ -19,7 +19,7 @@ const Header = () => {
             <Link href="/catalog" className={styles.navLink}>
               Каталог
             </Link>
-            <Link href="/shopping-card" className={styles.navLink}>
+            <Link href="/shopping-cart" className={styles.navLink}>
               Корзина
             </Link>
             <Link href="/about" className={styles.navLink}>
