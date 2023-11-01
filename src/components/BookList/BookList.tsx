@@ -2,7 +2,8 @@ import Link from "next/link";
 import { Button, Col, Container, FormControl, Image, InputGroup, Row } from "react-bootstrap";
 import styles from './BookList.module.css'
 import { BooksList } from "@/interfaces/BooksList";
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { BookInShoppingCart } from "@/interfaces/BookInShoppingCart";
 
 interface Props {
     data: BooksList[]
@@ -15,17 +16,53 @@ const BookList = (props: Props) => {
 
     const [cartCount, setCartCount] = useState(initialCartCount)
 
+    const [cart, setCart] = useState<BookInShoppingCart[]>([]);
+
+    // Load cart data from localStorage when the component mounts
+    useEffect(() => {
+        const savedCart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+        setCart(savedCart);
+    }, []);
+
+    // Save cart data to localStorage whenever the cart changes
+    useEffect(() => {
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    }, [cart]);
+
 
     const handleAddToCart = (index: number, book: BooksList) => {
         const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
         updatedCartCounts[index]++; // Increment the count for the selected book
         setCartCount(updatedCartCounts); // Update the state with the new counts
+
+        const bookForCart: BookInShoppingCart = {
+            id: book.id,
+            title: book.title,
+            author: book.author,
+            cover: book.cover,
+            price: book.price,
+            quantity: 0,
+            total: 0
+        }
+        setCart([...cart, bookForCart]);
     };
 
     const handlePlusCount = (index: number, book: BooksList) => {
         const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
         updatedCartCounts[index]++; // Increment the count for the selected book
         setCartCount(updatedCartCounts); // Update the state with the new counts
+
+        const bookForCart: BookInShoppingCart = {
+            id: book.id,
+            title: book.title,
+            author: book.author,
+            cover: book.cover,
+            price: book.price,
+            quantity: 0,
+            total: 0
+        }
+        setCart([...cart, bookForCart]);
+
     }
 
     const handleMinusCount = (index: number) => {

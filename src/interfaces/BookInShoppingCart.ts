@@ -1,9 +1,9 @@
-export interface BooksList {
+export interface BookInShoppingCart {
     id: number,
     title: string,
     author: string,
-    description: string,
     cover: string,
     price: number,
-    popularity: number
+    quantity: number,
+    total: number
 }
