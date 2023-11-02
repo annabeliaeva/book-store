@@ -3,20 +3,17 @@ import { Button, Col, Container, FormControl, Image, InputGroup, Row } from "rea
 import styles from './BookList.module.css'
 import { BooksList } from "@/interfaces/BooksList";
 import { useEffect, useState } from "react"
-import { BookInShoppingCart } from "@/interfaces/BookInShoppingCart";
+import { CartItem } from "@/interfaces/CartItem";
 
 interface Props {
     data: BooksList[]
 }
+
 const BookList = (props: Props) => {
 
     const { data } = props
 
-    const initialCartCount = Array(props.data.length).fill(0)
-
-    const [cartCount, setCartCount] = useState(initialCartCount)
-
-    const [cart, setCart] = useState<BookInShoppingCart[]>([]);
+    const [cart, setCart] = useState<CartItem[]>([]);
 
     // Load cart data from localStorage when the component mounts
     useEffect(() => {
@@ -31,45 +28,45 @@ const BookList = (props: Props) => {
 
 
     const handleAddToCart = (index: number, book: BooksList) => {
-        const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
-        updatedCartCounts[index]++; // Increment the count for the selected book
-        setCartCount(updatedCartCounts); // Update the state with the new counts
 
-        const bookForCart: BookInShoppingCart = {
-            id: book.id,
-            title: book.title,
-            author: book.author,
-            cover: book.cover,
-            price: book.price,
-            quantity: 0,
-            total: 0
+        const existingItem = cart.find((item) => item?.book?.id === book.id);
+        if (existingItem) {
+            // If the book already exists in the cart, update the quantity
+            existingItem.quantity += 1;
+            setCart([...cart]);
+        } else {
+            // If the book is not in the cart, add a new item
+            setCart([...cart, { book, quantity: 1 }]);
         }
-        setCart([...cart, bookForCart]);
     };
 
     const handlePlusCount = (index: number, book: BooksList) => {
-        const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
-        updatedCartCounts[index]++; // Increment the count for the selected book
-        setCartCount(updatedCartCounts); // Update the state with the new counts
-
-        const bookForCart: BookInShoppingCart = {
-            id: book.id,
-            title: book.title,
-            author: book.author,
-            cover: book.cover,
-            price: book.price,
-            quantity: 0,
-            total: 0
+        const existingItem = cart.find((item) => item.book.id === book.id);
+        if (existingItem) {
+            // If the book already exists in the cart, update the quantity
+            existingItem.quantity += 1;
+            setCart([...cart]);
+        } else {
+            // If the book is not in the cart, add a new item
+            setCart([...cart, { book, quantity: 1 }]);
         }
-        setCart([...cart, bookForCart]);
 
     }
 
-    const handleMinusCount = (index: number) => {
-        const updatedCartCounts = [...cartCount]; // Create a copy of the cartCounts array
-        if (updatedCartCounts[index] > 0)
-            updatedCartCounts[index]--; // Increment the count for the selected book
-        setCartCount(updatedCartCounts); // Update the state with the new counts
+    const handleMinusCount = (book: BooksList) => {
+        const existingItem = cart.find((item) => item.book.id === book.id);
+        if (existingItem) {
+            existingItem.quantity -= 1;
+            if (existingItem.quantity === 0) {
+                const updatedCart = cart.filter((item, id) => id === book.id)
+                setCart([...updatedCart]);
+            } else
+                setCart([...cart]);
+        }
+    }
+
+    const findBookInCartById = (book: BooksList) => {
+        return cart.find((item) => item.book.id === book.id)
     }
 
 
@@ -93,14 +90,14 @@ const BookList = (props: Props) => {
                         <Row>
                             <Col className="align-items-end ">
 
-                                {cartCount[index] > 0 ? ( // Check if cart count is more than 1
+                                {cart.find((item) => item.book.id === book.id)?.quantity != undefined ? ( // Check if cart count is more than 1
                                     <Container className="flex-row">
                                         <InputGroup className={styles.count_btns_group}>
-                                            <Button variant='light_green' onClick={() => handleMinusCount(index)} className={styles.plus_button}>-
+                                            <Button variant='light_green' onClick={() => handleMinusCount(book)} className={styles.plus_button}>-
                                             </Button>
                                             <FormControl
                                                 readOnly
-                                                value={cartCount[index] + " шт."}
+                                                value={findBookInCartById(book)?.quantity + " шт."}
                                                 className={`cart-count-field ${styles.form_control}`}
                                                 aria-label="Cart Count"
                                             />
