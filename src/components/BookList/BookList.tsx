@@ -58,7 +58,8 @@ const BookList = (props: Props) => {
         if (existingItem) {
             existingItem.quantity -= 1;
             if (existingItem.quantity === 0) {
-                const updatedCart = cart.filter((item, id) => id === book.id)
+                const updatedCart = cart.filter((item) => item.book.id !== book.id)
+                console.log(updatedCart)
                 setCart([...updatedCart]);
             } else
                 setCart([...cart]);
@@ -89,7 +90,6 @@ const BookList = (props: Props) => {
                         </Col>
                         <Row>
                             <Col className="align-items-end ">
-
                                 {cart.find((item) => item.book.id === book.id)?.quantity != undefined ? ( // Check if cart count is more than 1
                                     <Container className="flex-row">
                                         <InputGroup className={styles.count_btns_group}>
