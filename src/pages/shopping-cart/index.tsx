@@ -1,11 +1,12 @@
 
 import { AppLayout } from '@/components/AppLayout/AppLayout'
+import ShoppingCart from '@/components/ShoppingCart/ShoppingCart';
 import { CartItem } from '@/interfaces/CartItem';
 import '@/styles/globals.css'
 import { useEffect, useState } from 'react';
 
 
-const ShoppingCart = () => {
+const ShoppingCartPage = () => {
 
     const [cart, setCart] = useState<CartItem[]>([]);
 
@@ -17,18 +18,9 @@ const ShoppingCart = () => {
 
     return (
         <AppLayout>
-            <div>
-                <h2>Shopping Cart</h2>
-                {cart.map((item) => (
-                    <li key={item.book?.id}>
-                        {item.book?.title} - ${item.book?.price} (Quantity: {item.quantity})
-                    </li>
-                ))}
-            </div>
-
-
+            <ShoppingCart cart={cart} />
         </AppLayout>
     );
 };
 
-export default ShoppingCart;
+export default ShoppingCartPage;

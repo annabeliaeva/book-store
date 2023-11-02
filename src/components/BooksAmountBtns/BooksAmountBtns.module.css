@@ -1,0 +1,48 @@
+.main{
+    max-width: 200px;
+}
+
+.count_btns_group {
+    display: flex;
+    gap: 1px;
+    text-align: center;
+}
+
+.plus_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    width: 30px;
+    height: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+
+.form_control {
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.add_to_cart_button {
+    /* Button background color */
+    color: #000000;
+    /* Button text color */
+    padding: 5px 7px;
+    /* Padding inside the button */
+    border: none;
+    /* Remove the button border */
+    border-radius: 5px;
+    /* Add rounded corners */
+    cursor: pointer;
+    /* Change cursor to a pointer on hover */
+    font-size: 16px;
+    font-weight: 400;
+    /* Font size */
+    transition: background-color 0.3s;
+    /* Smooth background color transition on hover */
+  }

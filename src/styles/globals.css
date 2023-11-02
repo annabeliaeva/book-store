@@ -1,11 +1,16 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 body {
   width: 100%;
   font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background-color: #f7f5f8;
+
 }
 
 .main {
@@ -17,6 +22,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  height: fit-content;
 }
 
 .addBookLink {
@@ -58,6 +64,11 @@ body {
   justify-content: center;
 }
 
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .flex-align-center {
   display: flex;
   align-items: center;
@@ -72,11 +83,30 @@ body {
   min-height: 800px;
   /* Shorthand property specifying flex-grow, flex-shrink, and flex-basis. */
   background-color: whitesmoke;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .bookList {
   margin-top: 20px;
   width: 57%;
   height: 2000px;
+}
+
+
+.img_cover {
+  width: 120px;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.font_weight_300{
+  font-weight: 300;
+}
+
+.font_weight_400{
+  font-weight: 400;
+}
+
+.font_weight_500{
+  font-weight: 500;
 }

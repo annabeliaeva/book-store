@@ -1,0 +1,46 @@
+.header_text {
+    margin-top: 20px;
+}
+
+.book_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    height: 150px;
+    max-width: 80%
+}
+
+.cart_table {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* Add a border line below the book list */
+
+}
+
+.cover {
+    width: 90px;
+    height: 120px;
+    border-radius: 5px;
+}
+
+.border {
+    border-top: 1px solid black;
+    margin: 40px 0 0 0;
+    max-width: 80%;
+}
+
+.total_text{
+    margin: 20px;
+    font-size: 24px;
+}
+
+.order_btn{
+    max-width: 400px;
+    height: 50px;
+}
