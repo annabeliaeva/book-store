@@ -1,10 +1,12 @@
-.main{
+.main {
     max-width: 200px;
 }
 
 .count_btns_group {
     display: flex;
-    gap: 1px;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
     text-align: center;
 }
 
@@ -13,10 +15,13 @@
     justify-content: center;
     align-items: center;
     color: #000000;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid #e0dbdb;
+    /* Border style and color */
+    border-radius: 50%;
+    /* Makes the button round */
     width: 30px;
-    height: 100%;
+    /* Set the width and height to create a round shape */
+    height: 30px;
     font-size: 16px;
     transition: background-color 0.3s;
 }
@@ -45,4 +50,4 @@
     /* Font size */
     transition: background-color 0.3s;
     /* Smooth background color transition on hover */
-  }
+}

@@ -13,25 +13,25 @@ interface Props {
 }
 const BooksAmountBtns = (props: Props) => {
 
-    const {cart, book, handleAddToCart, handleMinusCount, findBookInCartById} = props
+    const { cart, book, handleAddToCart, handleMinusCount, findBookInCartById } = props
 
     return (
         <Row>
             <Col className={`align-items-end ${styles.main}`}>
                 {cart.find((item) => item.book.id === book.id)?.quantity != undefined ? ( // Check if cart count is more than 1
-                    <Container className="flex-row">
+                    <Container className={styles.count_btns_group}>
+                        <Button variant='white' onClick={() => handleMinusCount(book)} className={styles.plus_button}>-
+                        </Button>
                         <InputGroup className={styles.count_btns_group}>
-                            <Button variant='light_green' onClick={() => handleMinusCount(book)} className={styles.plus_button}>-
-                            </Button>
                             <FormControl
                                 readOnly
                                 value={findBookInCartById(book)?.quantity}
                                 className={`cart-count-field ${styles.form_control}`}
                                 aria-label="Cart Count"
                             />
-                            <Button variant='light_green' onClick={() => handleAddToCart(book)} className={styles.plus_button}>+
-                            </Button>
                         </InputGroup>
+                        <Button variant='white' onClick={() => handleAddToCart(book)} className={styles.plus_button}>+
+                        </Button>
                     </Container>
                 ) : (
                     <Button
