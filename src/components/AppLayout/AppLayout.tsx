@@ -1,7 +1,12 @@
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Header from '@/components/Header/Header'
+import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
+
+const Header = dynamic(
+    () => import('@/components/Header/Header'),
+    { ssr: false }
+)
 
 interface AppLayoutProps {
     children: ReactNode;

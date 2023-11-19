@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const ShoppingCartPage = () => {
 
-    const [cart, setCart] = useState<CartItem[]>([]);
+    const [cart, setCart] = useState<CartItem[]>([])
 
     // Load cart data from localStorage when the component mounts
     useEffect(() => {
@@ -23,4 +23,4 @@ const ShoppingCartPage = () => {
     );
 };
 
-export default ShoppingCartPage;
+export default ShoppingCartPage
