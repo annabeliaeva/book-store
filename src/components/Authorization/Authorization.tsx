@@ -13,9 +13,15 @@ const Authorization = (props: RegistrationPageProps) => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        setCookie('user', email)
+        fetch('/api/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password })
+        })
+            .then(res => {
+                if (res.status == 200) Router.reload()
+                else alert('Неправильный логин или пароль!')
+            })
 
-        Router.reload()
     };
 
     return (

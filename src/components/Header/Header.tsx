@@ -3,14 +3,14 @@ import { Navbar, Nav, Container, Image, Button } from 'react-bootstrap';
 import styles from './Header.module.css'; // Импортируем стили CSS Modules
 import Link from 'next/link';
 import path from 'path';
-import { getAuthUser } from '@/middleware/auth';
 import { deleteCookie, setCookie } from 'cookies-next';
 import Router from 'next/router';
+import { useAuth } from '../AuthContext';
 
 const Header = () => {
 
   const imagePath = path.join('/images', 'logo.png'); // Укажите путь к изображению внутри папки public
-  const user = getAuthUser()
+  const auth = useAuth()
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -23,8 +23,7 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    deleteCookie('user')
-    Router.reload()
+    auth.logOut()
   };
 
   return (
@@ -53,7 +52,7 @@ const Header = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {!user ? (
+            {!auth.user ? (
               <>
                 <Link href="/registration" className={styles.navLink}>
                   Регистрация
@@ -65,7 +64,7 @@ const Header = () => {
             ) : (
               <>
                 <div className={styles.navLink} onClick={handleLogout}>
-                  {user}
+                  {auth.user.email}
                 </div>
                 {isHovered && (
                   <Button variant="danger" onClick={handleLogout}>

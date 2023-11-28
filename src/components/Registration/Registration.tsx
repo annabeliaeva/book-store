@@ -50,7 +50,7 @@ const Registration = (props: RegistrationPageProps) => {
                 body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
+            if (response.status == 200) {
                 console.log('Регистрация успешна!');
                 Router.reload()
                 // Возможно, здесь вы захотите выполнить дополнительные действия, например, перенаправление на другую страницу

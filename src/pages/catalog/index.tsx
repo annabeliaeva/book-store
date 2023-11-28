@@ -6,11 +6,11 @@ import books_catalog from '@/data/books_catalog.json' // Импортируем 
 import '@/styles/globals.css'
 import { BooksList } from '@/interfaces/BooksList'
 import BooksCatalog from '@/components/BooksCatalog/BooksCatalog'
+import { PrismaClient } from '@prisma/client'
 
-const Catalog = () => {
+const Catalog = ({ books }) => {
 
-  const [books, setBooks] = useState<BooksList[]>(books_catalog)
-  const [sortedBooks, setSortedBooks] = useState<BooksList[]>(books_catalog)
+  const [sortedBooks, setSortedBooks] = useState<BooksList[]>(books)
 
   const sortBooks = (criteria: string) => {
     const sorted = [...sortedBooks];
@@ -57,5 +57,18 @@ const Catalog = () => {
     </AppLayout>
   );
 };
+
+export async function getServerSideProps() {
+
+  let prisma = new PrismaClient
+  const books = await prisma.book.findMany()
+
+  return {
+    props: {
+      books: JSON.parse(JSON.stringify(books)),
+    },
+  };
+}
+
 
 export default Catalog;
