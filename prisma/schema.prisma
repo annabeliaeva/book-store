@@ -37,4 +37,5 @@ model Order {
   creation_date  DateTime @default(now())
   delivery_to    String
   payment_method String
+  status         String @default("В обработке")
 }

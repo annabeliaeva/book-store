@@ -9,8 +9,6 @@ import { GetServerSidePropsContext } from 'next';
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 
     const userCred = await getSessionUser(ctx)
-    console.log('dizel')
-    console.log(userCred)
 
     const prisma = new PrismaClient()
 
@@ -50,6 +48,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 
 const Profile = (props) => {
 
+    console.log(props.orders)
     return (
         <AppLayout>
             <MyProfile user={props.user} orders={props.orders} />
