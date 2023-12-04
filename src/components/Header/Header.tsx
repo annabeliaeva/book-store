@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, Container, Image, Button } from 'react-bootstrap';
 import styles from './Header.module.css'; // Импортируем стили CSS Modules
 import Link from 'next/link';
@@ -13,6 +13,7 @@ const Header = () => {
   const auth = useAuth()
 
   const [isHovered, setIsHovered] = useState(false);
+  const [cart, setCart] = useState(0)
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -26,6 +27,12 @@ const Header = () => {
     auth.logOut()
   };
 
+
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    setCart(savedCart.length?? 0);
+}, []);
+
   return (
     <div className={`${styles.header} bg-secondary`}>
       <Navbar expand="lg" className={styles.navbar}>
@@ -38,7 +45,7 @@ const Header = () => {
             Каталог
           </Link>
           <Link href="/shopping-cart" className={styles.navLink}>
-            Корзина
+            Корзина {cart > 0? `(${cart})` : ''}
           </Link>
           <Link href="/about" className={styles.navLink}>
             О нас
@@ -66,11 +73,15 @@ const Header = () => {
                 <div className={styles.navLink} onClick={handleLogout}>
                   {auth.user.email}
                 </div>
-                {isHovered && (
+                {isHovered && (<>
+                  <Button onClick={() => Router.push('/profile')} className={styles.navLink}>
+                    Профиль
+                  </Button>
                   <Button variant="danger" onClick={handleLogout}>
                     Выйти
                   </Button>
-                )}
+
+                </>)}
               </>
             )}
           </div>

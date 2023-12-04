@@ -16,10 +16,12 @@
     "cookies-next": "^4.1.0",
     "next": "^13.5.4",
     "next-seo": "^6.1.0",
+    "next-superjson-plugin": "^0.5.10",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.69.1"
+    "sass": "^1.69.1",
+    "superjson": "^1.13.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

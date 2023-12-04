@@ -2,7 +2,7 @@ import crypto from 'crypto'
 import { Buffer } from 'buffer'
 
 const algorithm = 'aes-256-cbc'
-const key = crypto.scryptSync('пароль', 'соль', 32)
+const key = 'EvilAnna'
 
 export const createCookieSessionString = (login: string, passwordHash: string) => {
     let cookieStr = `[encode]${login}::${passwordHash}[encode]`

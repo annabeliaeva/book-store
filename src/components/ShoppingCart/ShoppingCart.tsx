@@ -6,6 +6,7 @@ import BooksAmountBtns from "../BooksAmountBtns/BooksAmountBtns"
 import { BooksList } from "@/interfaces/BooksList"
 import { useEffect, useState } from "react"
 import { formatNumberWithSpace } from "@/data/functions"
+import { useRouter } from "next/router"
 
 interface Props {
     cart: CartItem[]
@@ -14,6 +15,9 @@ interface Props {
 
 
 const ShoppingCart = (props: Props) => {
+
+    const router = useRouter()
+
 
     const countTotalPrice = () => {
         return cart.reduce((total, item) => total + item.book.price * item.quantity, 0);
@@ -112,7 +116,7 @@ const ShoppingCart = (props: Props) => {
                 </Col>
             </Row>
             <Row className='flex-center'>
-                <Button className={style.order_btn} variant='light_green'>Перейти к оформлению</Button>
+                <Button onClick={() => router.push('/make-order')} className={style.order_btn} variant='light_green'>Перейти к оформлению</Button>
             </Row>
         </Container>
     )

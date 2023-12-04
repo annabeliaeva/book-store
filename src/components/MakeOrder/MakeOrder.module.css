@@ -1,0 +1,12 @@
+.header_text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.name_and_surname {
+    gap: 10px;
+}
+
+.date_and_time {
+    gap: 10px;
+}
